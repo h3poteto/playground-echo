@@ -3,6 +3,6 @@ server {
     server_name _;
 
     location / {
-        proxy_pass http://$ECHO_SERVER:$ECHO_PORT
+        proxy_pass http://$ECHO_SERVER:$ECHO_PORT;
     }
 }
