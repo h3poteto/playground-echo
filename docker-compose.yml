@@ -1,0 +1,15 @@
+version: '3'
+services:
+  echo:
+    image: h3poteto/playground-echo-go
+    environment:
+      PORT: 9090
+  nginx:
+    image: h3poteto/playground-echo-nginx
+    depends_on:
+      - echo
+    environment:
+      ECHO_SERVER: echo
+      ECHO_PORT: 9090
+    ports:
+      - "80:80"
