@@ -7,6 +7,7 @@ jobs:
         environment:
           GO_REPOSITORY: h3poteto/playground-echo-go
           NGINX_REPOSITORY: h3poteto/playground-echo-nginx
+          CLIENT_REPOSITORY: h3poteto/playground-echo-client
     working_directory: /usr/src/app
     steps:
       - checkout
@@ -27,4 +28,6 @@ jobs:
             docker push $GO_REPOSITORY:$CIRCLE_BRANCH
             cd dockerfiles/nginx && docker build -t $NGINX_REPOSITORY:$CIRCLE_BRANCH .
             docker push $NGINX_REPOSITORY:$CIRCLE_BRANCH
+            docker build -t $CLIENT_REPOSITORY:$CIRCLE_BRANCH -f dockerfiles/client/Dockerfile .
+            docker push $CLIENT_REPOSITORY:$CIRCLE_BRANCH
 
