@@ -14,7 +14,7 @@ jobs:
             docker login -u $HUB_USER -p $HUB_PASSWORD
             docker build -t $GO_REPOSITORY:$CIRCLE_BRANCH -f dockerfiles/go/Dockerfile .
             docker push $GO_REPOSITORY:$CIRCLE_BRANCH
-            cd dockerfiles/nginx && docker build -t $NGINX_REPOSITORY:$CIRCLE_BRANCH .
+            docker build -t $NGINX_REPOSITORY:$CIRCLE_BRANCH -f dockerfiles/nginx/Dockerfile .
             docker push $NGINX_REPOSITORY:$CIRCLE_BRANCH
             docker build -t $CLIENT_REPOSITORY:$CIRCLE_BRANCH -f dockerfiles/client/Dockerfile .
             docker push $CLIENT_REPOSITORY:$CIRCLE_BRANCH

@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"time"
 )
 
 func main() {
 	for {
-		url := "http://localhost:9090"
+		url := "http://" + os.Getenv("SERVER_HOST") + ":" + os.Getenv("SERVER_PORT")
 
 		resp, _ := http.Get(url)
 		defer resp.Body.Close()
